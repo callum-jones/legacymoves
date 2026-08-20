@@ -114,8 +114,9 @@ a.cta-link:hover { color: #2A9D9D; }
 
 /* ════════ Tablet & mobile nav (hamburger) ════════ */
 @media (max-width: 1024px) {
-  .header-top { padding: 20px 24px 0; align-items: center; }
+  .header-top { padding: 20px 24px; align-items: center; }
   .nav-toggle { display: block; }
+  .date-badge { display: none; }
 
   .nav-row {
     padding: 0;
@@ -150,8 +151,7 @@ a.cta-link:hover { color: #2A9D9D; }
 @media (max-width: 640px) {
   .logo-lockup .wordmark { font-size: 23px; }
   .logo-lockup .wordmark-script { font-size: 25px; }
-  .logo-lockup .tagline { font-size: 10px; }
-  .date-badge { display: none; }
+  .logo-lockup .tagline { display: none; }
 }
 
 /* ════════ Footer ════════ */
