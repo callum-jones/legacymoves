@@ -30,15 +30,15 @@ header.site-header {
   border-bottom: 1px solid rgba(59, 52, 42, .18);
 }
 .header-top {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 26px 48px 0;
+  width: 100%;
+  padding: 20px 48px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
+  flex-wrap: nowrap;
 }
-.logo-lockup { cursor: pointer; text-decoration: none; color: inherit; display: block; }
+.logo-lockup { cursor: pointer; text-decoration: none; color: inherit; display: block; flex-shrink: 0; }
 .logo-lockup .wordmark {
   font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase;
   font-size: 28px; letter-spacing: 0.2px; color: #232019;
@@ -55,26 +55,18 @@ header.site-header {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding-top: 8px;
+  gap: 16px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 101;
 }
-.date-badge {
-  font-family: 'Sora', sans-serif; font-weight: 500; letter-spacing: 2px;
-  font-size: 11px; color: #2A9D9D; text-transform: uppercase; white-space: nowrap;
-}
-.header-cta { padding: 9px 22px; }
+.header-cta { padding: 9px; }
 
-.nav-row {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 26px 48px 22px;
-}
 nav.site-nav {
   display: flex;
   gap: clamp(14px, 2vw, 30px);
   flex-wrap: nowrap;
   align-items: baseline;
-  overflow-x: auto;
 }
 .nav-link {
   cursor: pointer; text-decoration: none;
@@ -91,14 +83,14 @@ nav.site-nav {
   letter-spacing: 1px; font-size: clamp(9px, 1vw, 11px);
   white-space: nowrap; flex-shrink: 0;
   color: #FFFFFF; background: #2A9D9D; border: 1px solid #2A9D9D;
-  border-radius: 6px; padding: 11px 26px; line-height: 1;
+  border-radius: 6px; padding: 11px; line-height: 1;
   transition: background-color .15s ease, border-color .15s ease, transform .1s ease;
 }
 .nav-cta { display: none; }
 a.cta-link:hover { color: #FFFFFF; background: #23898A; border-color: #23898A; }
 a.cta-link:active { transform: scale(0.97); }
 
-/* Hamburger button — hidden on desktop */
+/* Hamburger button — hidden until JS finds the nav doesn't fit */
 .nav-toggle {
   display: none;
   appearance: none;
@@ -106,7 +98,7 @@ a.cta-link:active { transform: scale(0.97); }
   border: none;
   cursor: pointer;
   padding: 8px;
-  margin: -8px -8px -8px 12px;
+  margin: -8px -8px -8px 4px;
   flex-shrink: 0;
 }
 .nav-toggle .bar {
@@ -115,51 +107,52 @@ a.cta-link:active { transform: scale(0.97); }
   height: 2px;
   background: #232019;
   margin: 5px 0;
-  transition: transform .2s ease, opacity .2s ease;
+  transition: transform .2s ease, opacity .2s ease, background-color .2s ease;
 }
 .nav-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-toggle[aria-expanded="true"] .bar { background: #FFFFFF; }
 
-/* ════════ Tablet & mobile nav (hamburger) ════════ */
-@media (max-width: 1024px) {
-  .header-top { padding: 20px 24px; align-items: center; }
-  .nav-toggle { display: block; }
-  .date-badge { display: none; }
-  .header-actions { padding-top: 0; gap: 14px; }
-  .header-cta { display: none; }
-
-  .nav-row {
-    padding: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .25s ease;
-  }
-  .nav-row.open { max-height: 480px; }
-
-  nav.site-nav {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    overflow-x: visible;
-    padding: 8px 24px 22px;
-  }
-  .nav-link {
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(59, 52, 42, .12);
-    font-size: 12px;
-  }
-  .nav-link.active { border-bottom: 1px solid rgba(59, 52, 42, .12); }
-  .nav-cta {
-    display: inline-block;
-    margin-left: 0;
-    margin-top: 14px;
-    padding: 12px 26px;
-    align-self: flex-start;
-  }
+/* ════════ Collapsed (hamburger) mode — applied by JS when the nav no longer fits ════════ */
+.site-header.nav-collapsed .header-cta { display: none; }
+.site-header.nav-collapsed .nav-toggle { display: block; }
+.site-header.nav-collapsed nav.site-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #3B342A;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 96px 24px 48px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.site-header.nav-collapsed nav.site-nav.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease;
+}
+.site-header.nav-collapsed .nav-link {
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, .65);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.site-header.nav-collapsed .nav-link.active { color: #FFFFFF; }
+.site-header.nav-collapsed .nav-cta {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 14px 32px;
 }
 
 @media (max-width: 640px) {
+  .header-top { padding: 20px 24px; }
   .logo-lockup .wordmark { font-size: 23px; }
   .logo-lockup .wordmark-script { font-size: 25px; }
   .logo-lockup .tagline { display: none; }

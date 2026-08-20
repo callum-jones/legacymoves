@@ -1,16 +1,32 @@
 (function () {
+  var header = document.querySelector('.site-header');
+  var headerTop = document.querySelector('.header-top');
   var toggle = document.querySelector('.nav-toggle');
-  var navRow = document.querySelector('.nav-row');
-  if (!toggle || !navRow) return;
+  var siteNav = document.querySelector('.site-nav');
+  if (!header || !headerTop || !toggle || !siteNav) return;
 
   function closeMenu() {
     toggle.setAttribute('aria-expanded', 'false');
-    navRow.classList.remove('open');
+    siteNav.classList.remove('open');
   }
 
   function openMenu() {
     toggle.setAttribute('aria-expanded', 'true');
-    navRow.classList.add('open');
+    siteNav.classList.add('open');
+  }
+
+  // Measure whether logo + nav + button still fit on one line. Nav is only
+  // ever removed from flow (fixed overlay) once collapsed, so briefly drop
+  // the collapsed class to get a true natural-width reading, then decide.
+  function checkFit() {
+    var wasCollapsed = header.classList.contains('nav-collapsed');
+    header.classList.remove('nav-collapsed');
+    var overflowing = headerTop.scrollWidth > headerTop.clientWidth + 1;
+    if (overflowing) {
+      header.classList.add('nav-collapsed');
+    } else if (wasCollapsed) {
+      closeMenu();
+    }
   }
 
   toggle.addEventListener('click', function () {
@@ -22,11 +38,11 @@
     if (e.key === 'Escape') closeMenu();
   });
 
-  document.addEventListener('click', function (e) {
-    if (!navRow.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(checkFit, 100);
   });
 
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 1024) closeMenu();
-  });
+  checkFit();
 })();
