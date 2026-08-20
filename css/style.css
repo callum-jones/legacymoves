@@ -16,7 +16,7 @@
 
   /* Backgrounds */
   --color-bg: #FBFBFA;              
-  --color-bg-alt: #EAF0EF;       
+  --color-bg-alt: #F1EDE3;       
   --color-bg-base: #F5F5F5;
   --color-brown: #1F2C2A;          
   --color-placeholder-bg: #16201E; 
@@ -63,7 +63,7 @@ header.site-header {
   padding: 16px 48px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 32px;
   flex-wrap: nowrap;
 }
