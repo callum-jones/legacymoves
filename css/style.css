@@ -1,0 +1,209 @@
+/* Legacy Moves — base styles */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #F5F5F5; overflow-x: hidden; }
+::selection { background: #F5F5F5; }
+body {
+  width: 100%;
+  background: #FAF7F1;
+  color: #232019;
+  font-family: 'Newsreader', serif;
+  font-weight: 300;
+}
+img { max-width: 100%; }
+a { color: inherit; }
+
+/* ════════ Container padding — shrinks on small screens ════════ */
+@media (max-width: 640px) {
+  .wrap {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  footer { padding-left: 24px !important; padding-right: 24px !important; }
+}
+
+/* ════════ Header / nav ════════ */
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #F1EDE3;
+  border-bottom: 1px solid rgba(59, 52, 42, .18);
+}
+.header-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 26px 48px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo-lockup { cursor: pointer; text-decoration: none; color: inherit; display: block; }
+.logo-lockup .wordmark {
+  font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase;
+  font-size: 28px; letter-spacing: 0.2px; color: #232019;
+}
+.logo-lockup .wordmark-script {
+  font-family: 'Newsreader', serif; font-style: italic; font-weight: 500;
+  font-size: 31px; color: #2A9D9D; margin-left: 2px;
+}
+.logo-lockup .wordmark-r { font-size: 14px; color: #232019; }
+.logo-lockup .tagline {
+  font-family: 'Sora', sans-serif; font-weight: 400; font-size: 11px;
+  letter-spacing: 1px; text-transform: uppercase; color: #8B8676; margin-top: 6px;
+}
+.date-badge {
+  font-family: 'Sora', sans-serif; font-weight: 500; letter-spacing: 2px;
+  font-size: 11px; color: #2A9D9D; text-transform: uppercase; white-space: nowrap;
+  padding-top: 8px;
+}
+
+.nav-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 26px 48px 22px;
+}
+nav.site-nav {
+  display: flex;
+  gap: clamp(14px, 2vw, 30px);
+  flex-wrap: nowrap;
+  align-items: baseline;
+  overflow-x: auto;
+}
+.nav-link {
+  cursor: pointer; text-decoration: none;
+  font-family: 'Sora', sans-serif; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 1px; font-size: clamp(9px, 1vw, 11px);
+  padding-bottom: 5px; white-space: nowrap; flex-shrink: 0;
+  color: #8B8676; border-bottom: 1px solid transparent;
+}
+.nav-link.active { color: #232019; border-bottom: 1px solid #2A9D9D; }
+.cta-link {
+  cursor: pointer; text-decoration: none;
+  font-family: 'Sora', sans-serif; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 1px; font-size: clamp(9px, 1vw, 11px);
+  padding-bottom: 5px; white-space: nowrap; flex-shrink: 0;
+}
+nav.site-nav .cta-link {
+  color: #232019; border-bottom: 2px solid #2A9D9D; margin-left: auto;
+}
+a.cta-link:hover { color: #2A9D9D; }
+
+/* Hamburger button — hidden on desktop */
+.nav-toggle {
+  display: none;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin: -8px -8px -8px 12px;
+  flex-shrink: 0;
+}
+.nav-toggle .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #232019;
+  margin: 5px 0;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ════════ Tablet & mobile nav (hamburger) ════════ */
+@media (max-width: 1024px) {
+  .header-top { padding: 20px 24px 0; align-items: center; }
+  .nav-toggle { display: block; }
+
+  .nav-row {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease;
+  }
+  .nav-row.open { max-height: 480px; }
+
+  nav.site-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: visible;
+    padding: 8px 24px 22px;
+  }
+  .nav-link {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(59, 52, 42, .12);
+    font-size: 12px;
+  }
+  .nav-link.active { border-bottom: 1px solid rgba(59, 52, 42, .12); }
+  nav.site-nav .cta-link {
+    margin-left: 0;
+    margin-top: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #2A9D9D;
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo-lockup .wordmark { font-size: 23px; }
+  .logo-lockup .wordmark-script { font-size: 25px; }
+  .logo-lockup .tagline { font-size: 10px; }
+  .date-badge { display: none; }
+}
+
+/* ════════ Footer ════════ */
+footer.site-footer {
+  border-top: 1px solid rgba(59, 52, 42, .18);
+  padding: 64px 48px 72px;
+  background: #FAF7F1;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+.footer-logo {
+  cursor: pointer; text-decoration: none; color: inherit;
+}
+.footer-logo .wordmark {
+  font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase;
+  font-size: 22px; letter-spacing: 0.2px; color: #232019;
+}
+.footer-logo .wordmark-script {
+  font-family: 'Newsreader', serif; font-style: italic; font-weight: 500;
+  font-size: 24px; color: #2A9D9D; margin-left: 2px;
+}
+.footer-logo .wordmark-r { font-size: 13px; color: #232019; }
+.footer-tagline {
+  font-family: 'Sora', sans-serif; font-weight: 400; font-size: 11px;
+  letter-spacing: 1px; text-transform: uppercase; color: #8B8676; margin-top: 10px;
+}
+.footer-cta { margin-top: 26px; }
+.footer-cta .cta-link {
+  color: #232019; border-bottom: 1px solid #2A9D9D; padding-bottom: 4px;
+}
+
+/* ════════ Responsive grid utilities ════════ */
+/* Two/three column layouts stack below these breakpoints */
+@media (max-width: 900px) {
+  .stack-md { grid-template-columns: 1fr !important; gap: 48px !important; }
+}
+@media (max-width: 768px) {
+  .stack-sm { grid-template-columns: 1fr !important; }
+  .stack-sm .divider-hide { display: none !important; }
+  .stack-sm > * + * { margin-top: 0; }
+}
+
+/* ════════ Media placeholders (design-tool image/video slots) ════════ */
+.media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #2b251d;
+  color: rgba(255, 255, 255, .55);
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  letter-spacing: .3px;
+  padding: 24px;
+  line-height: 1.5;
+}
