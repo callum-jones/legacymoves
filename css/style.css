@@ -31,9 +31,9 @@ header.site-header {
 }
 .header-top {
   width: 100%;
-  padding: 20px 48px;
+  padding: 16px 48px;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: flex-start;
   gap: 32px;
   flex-wrap: nowrap;
@@ -155,7 +155,7 @@ a.cta-link:active { transform: scale(0.97); }
 }
 
 @media (max-width: 640px) {
-  .header-top { padding: 20px 24px; }
+  .header-top { padding: 16px 24px; }
   .logo-lockup .wordmark { font-size: 23px; }
   .logo-lockup .wordmark-script { font-size: 25px; }
 }
