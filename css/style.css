@@ -235,6 +235,119 @@ footer.site-footer {
   .stack-sm > * + * { margin-top: 0; }
 }
 
+/* ════════ Inline text utilities ════════ */
+.text-teal { color: var(--color-teal); }
+.text-teal-em { color: var(--color-teal); font-style: italic; font-weight: 500; }
+.text-teal-deep { color: var(--color-teal-deep); }
+.text-teal-light { color: var(--color-teal-light); }
+.nowrap { white-space: nowrap; }
+
+/* ════════ Eyebrow labels (small uppercase kickers above headings) ════════ */
+.eyebrow {
+  display: block;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-label);
+}
+.eyebrow-spaced { margin-bottom: 24px; }
+.eyebrow-center { text-align: center; }
+.eyebrow-light { color: var(--color-teal-light); }
+
+/* ════════ Small uppercase teal tags (CTAs, attributions, speaker labels) ════════ */
+.tag-teal {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+.tag-teal-block { display: block; margin-bottom: 24px; }
+.card-cta { margin-top: auto; }
+
+/* ════════ Card label (eyebrow-style tag inside a card) ════════ */
+.card-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+/* ════════ Numbered step markers ════════ */
+.step-number {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-teal);
+  padding-top: 2px;
+  line-height: 1.2;
+}
+
+/* ════════ Checklist bullet ════════ */
+.bullet-dot {
+  color: var(--color-teal);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* ════════ Credential list (About Sara) ════════ */
+.credential-item {
+  position: relative;
+  display: block;
+  padding-left: 26px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+.credential-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-teal);
+  font-size: 13px;
+}
+
+/* ════════ Section backgrounds ════════ */
+.section-plain { background: var(--color-bg); }
+.section-alt { background: var(--color-bg-alt); }
+.section-bordered { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+.section-alt-bordered { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); }
+.section-quote { background: var(--color-bg); padding: clamp(48px, 6vw, 80px) 7vw; }
+.section-dark { background: var(--color-brown); padding: 80px 80px; position: relative; overflow: hidden; }
+.section-dark-cta {
+  background: var(--color-brown);
+  color: var(--color-white);
+  padding: clamp(60px, 7vw, 88px) 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ════════ "What this is" info cards ════════ */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.info-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ════════ Media placeholders (design-tool image/video slots) ════════ */
 .media-placeholder {
   display: flex;
