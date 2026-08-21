@@ -771,10 +771,11 @@ footer.site-footer {
   font-family: 'Sora', sans-serif;
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 400;
-  color: var(--color-white);
-  text-decoration: none;
+  color: var(--color-teal-light);
+  text-decoration: underline;
   margin: 32px 0 8px;
   transition: color .15s ease;
+
 }
 .cta-email:hover { color: var(--color-teal); }
 
