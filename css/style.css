@@ -9,6 +9,7 @@
   /* Text */
   --color-text: #171614;
   --color-text-secondary: #4A473E;
+  --color-text-body: #4A473E;
   --color-text-muted: #5A5A54;
   --color-text-quote: #726D5F;
   --color-text-label: #8B8676;
@@ -260,6 +261,7 @@ footer.site-footer {
 /* Two/three column layouts stack below these breakpoints */
 @media (max-width: 900px) {
   .stack-md { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .stack-md .sticky-heading { position: static; }
 }
 @media (max-width: 768px) {
   .stack-sm { grid-template-columns: 1fr !important; }
@@ -285,7 +287,7 @@ footer.site-footer {
   font-weight: 400;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--color-text-label);
+  color: var(--color-text-secondary);
 }
 .eyebrow-spaced { margin-bottom: 12px; }
 .eyebrow-center { text-align: center; }
@@ -309,7 +311,7 @@ footer.site-footer {
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--color-text);
+  color: var(--color-text-secondary);
 }
 .card-label.is-highlight { color: var(--color-teal); }
 .card-stack { display: flex; flex-direction: column; gap: 16px; }
@@ -437,7 +439,7 @@ footer.site-footer {
   font-family: 'Newsreader', serif;
   font-size: clamp(19px, 1.8vw, 23px);
   font-weight: 300;
-  color: var(--color-text-secondary);
+  color: var(--color-text-body);
   margin: 34px auto 0;
   line-height: 1.7;
 }
@@ -445,7 +447,7 @@ footer.site-footer {
   font-family: 'Newsreader', serif;
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-text-secondary);
+  color: var(--color-text-body);
   line-height: 1.5;
   margin: 16px 0 22px;
 }
@@ -494,7 +496,7 @@ footer.site-footer {
   font-family: 'Newsreader', serif;
   font-size: 17px;
   font-weight: 300;
-  color: var(--color-text-secondary);
+  color: var(--color-text-body);
   line-height: 1.7;
   margin: 0;
 }
@@ -549,7 +551,7 @@ footer.site-footer {
 }
 .breakdown-row.is-highlight .breakdown-marker { font-size: 13px; font-weight: 500; color: var(--color-teal); }
 .breakdown-row.is-highlight .breakdown-title { font-size: 18px; }
-.breakdown-row.is-highlight .breakdown-desc { color: var(--color-text-secondary); }
+.breakdown-row.is-highlight .breakdown-desc { color: var(--color-text-body); }
 
 .stirs-row .step-number { font-size: clamp(17px, 1.6vw, 22px); }
 
@@ -679,7 +681,7 @@ footer.site-footer {
 .divider-grid-hero { max-width: 1180px; margin: 0 auto; gap: clamp(40px, 5vw, 80px); align-items: stretch; }
 .split-lead { font-family: 'Sora', sans-serif; font-size: clamp(20px, 2vw, 27px); font-weight: 400; line-height: 1.4; color: var(--color-text); margin: 0; }
 .split-quote-col { padding-top: 4px; }
-.split-quote-text { font-family: 'Newsreader', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 1.9vw, 24px); line-height: 1.7; color: var(--color-text-secondary); margin: 0 0 22px; }
+.split-quote-text { font-family: 'Newsreader', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 1.9vw, 24px); line-height: 1.7; color: var(--color-text-body); margin: 0 0 22px; }
 
 .testimonial-quote { font-family: 'Newsreader', serif; font-size: 20px; font-style: italic; font-weight: 300; color: var(--color-text); line-height: 1.65; margin: 0 0 20px; }
 
@@ -694,7 +696,7 @@ footer.site-footer {
 .fellowship-quote { font-family: 'Newsreader', serif; font-size: clamp(19px, 1.8vw, 22px); font-weight: 300; font-style: italic; color: var(--color-text); line-height: 1.5; margin: 0 0 12px; }
 
 /* ════════ Investment / pricing list (Start the Conversation) ════════ */
-.investment-intro { font-family: 'Newsreader', serif; font-size: 19px; font-weight: 300; line-height: 1.65; color: var(--color-text-secondary); margin: 0 0 32px; }
+.investment-intro { font-family: 'Newsreader', serif; font-size: 19px; font-weight: 300; line-height: 1.65; color: var(--color-text-body); margin: 0 0 32px; }
 .price-total { font-family: 'Oswald', sans-serif; font-weight: 500; text-transform: none; font-size: clamp(32px, 4vw, 48px); color: var(--color-teal-light); line-height: 1; margin: 32px 0 0; }
 .price-note { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 400; color: rgba(var(--white-rgb), .6); margin: 14px 0 0; }
 
@@ -703,6 +705,9 @@ footer.site-footer {
   background: var(--color-brown);
   border-radius: 6px;
   padding: 80px 80px;
+}
+@media (max-width: 640px) {
+  .cta-box { padding: 24px; }
 }
 .cta-inner { max-width: 700px; margin: 0 auto; }
 .cta-copy {
