@@ -45,4 +45,10 @@
   });
 
   checkFit();
+
+  // Re-check once web fonts finish loading — font swap can change text
+  // width enough to flip the fit decision after the initial check.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(checkFit);
+  }
 })();
