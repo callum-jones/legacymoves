@@ -737,6 +737,9 @@ footer.site-footer {
 .quote-em { color: var(--color-teal-light); }
 .quote-slide .pull-quote-attribution { color: rgba(var(--white-rgb), .7); }
 .hero-quote-card { max-width: 700px; margin-top: clamp(56px, 6vw, 84px); margin-left: auto; margin-right: auto; }
+.hero-split { margin-top: 56px; }
+.hero-split .hero-quote-card,
+.hero-split .hero-lead { margin-top: 0; }
 .hero-quote-card .testimonial-quote { font-size: clamp(18px, 2vw, 28px); line-height: 1.35; }
 
 .credential-cycler { margin-top: 20px; }
